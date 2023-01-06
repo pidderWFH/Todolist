@@ -12,19 +12,21 @@
 </head>
 <body>
     <section class="login">
-        <div class="container">
-            <div class="form signIn">
+        <div class="container forms">
+            <!-- Signin Form -->
+            <div class="form signin">
                 <h2>
                     <img src="./images/logo_lg.png" alt="">
                 </h2>
                 <form action="#">
                     <div class="input-field">
-                        <label for="email">信箱</label>
+                        <!-- <label for="email">信箱</label> -->
                         <input type="email" placeholder="請輸入Email" class="input" id="email">
                     </div>
                     <div class="input-field">
-                        <label for="password">密碼</label>
+                        <!-- <label for="password">密碼</label> -->
                         <input type="password" placeholder="請輸入密碼" class="password" id="password">
+                        <i class="bx bx-hide hide-icon"></i>
                     </div>
                     <div class="form-link">
                        <a href="#" class="forgot-pass">Forgot password ?</a>
@@ -33,7 +35,52 @@
                         <button>登入</button>
                     </div>
                     <div class="form-link">
-                        <span>Already have an account ?<a href="#" class="signup-link"> Signup </a></span>
+                        <span>Need an account ?<a href="#" class="link signup-link"> Signup </a></span>
+                     </div>
+                </form>
+                <div class="line"></div>
+                <div class="third-options">
+                    <a href="#" class="facebook">
+                        <i class="bx bxl-facebook-circle"></i>
+                        <span>Login with Facebook</span>
+                    </a>
+                </div>
+                <div class="third-options">
+                    <a href="#" class="google">
+                        <i class="bx bxl-google-plus-circle"></i>
+                        <span>Login with Google</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Signup Form -->
+            <div class="form signup">
+                <h2>
+                    <img src="./images/logo_lg.png" alt="">
+                </h2>
+                <form action="#">
+                    <div class="input-field">
+                        <!-- <label for="signup-email">信箱</label> -->
+                        <input type="email" placeholder="請輸入Email" class="input" id="signup-email">
+                    </div>
+                    <div class="input-field">
+                        <!-- <label for="name">您的暱稱</label> -->
+                        <input type="text" placeholder="請輸入暱稱" class="input" id="name">
+                    </div>
+                    <div class="input-field">
+                        <!-- <label for="signup-password">密碼</label> -->
+                        <input type="password" placeholder="請輸入密碼" class="password" id="signup-password">
+                    </div>
+                    <div class="input-field">
+                        <!-- <label for="checked-password">再次輸入密碼</label> -->
+                        <input type="password" placeholder="請再次輸入密碼" class="password" id="checked-password">
+                        <i class="bx bx-hide hide-icon"></i>
+                    </div>
+                    <div class="button-field">
+                        <button>註冊</button>
+                    </div>
+                    <div class="form-link">
+                        <span>Already have an account ?<a href="#" class="link signin-link"> Signin </a></span>
                      </div>
                 </form>
                 <div class="line"></div>
@@ -52,5 +99,6 @@
             </div>
         </div>
     </section>
+    <script src="./js/script.js"></script>
 </body>
 </html>
