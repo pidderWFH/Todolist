@@ -55,7 +55,7 @@ signup.addEventListener("click", (e) =>{
             icon: "success",
             title: `${ nickName }，你好 !`
         }).then(() =>{
-            window.location = "../index.html";
+            window.location = "../Todolist/index.html";
         })
     })
     .catch((err) =>{
