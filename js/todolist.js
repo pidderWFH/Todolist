@@ -18,7 +18,7 @@ function logout(){
         }).then(() =>{
             localStorage.clear();
             // window.location = "../login.html";
-            window.location.assign("login.html");
+            window.location = "/Todolist/login.html";
         })
     }).catch((err) =>{
         let errTxt = err.response.data.error ? error.response.data.err : "";
@@ -30,7 +30,7 @@ function logout(){
     })
 }
 
-if( window.localStorage.pathname = "index.html"){
+if( window.localStorage.pathname = "todolist.html"){
     getTodos();
     todoUser.textContent = `${localStorage.getItem("nickName")} 的待辦`; 
 }
