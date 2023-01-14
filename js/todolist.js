@@ -17,7 +17,7 @@ function logout(){
             title: res.data.message,
         }).then(() =>{
             localStorage.clear();
-            window.location = "../index.html";
+            window.location = "./index.html";
             // window.location = "/Todolist/login.html";
         })
     }).catch((err) =>{

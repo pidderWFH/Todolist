@@ -55,7 +55,7 @@ signup.addEventListener("click", (e) =>{
             icon: "success",
             title: `${ nickName }，你好 !`
         }).then(() =>{
-            window.location = "../todolist.html";
+            window.location = "./todolist.html";
             // window.location = "/Todolist/todolist.html";
         })
     })
@@ -112,7 +112,7 @@ signin.addEventListener("click", (e) =>{
             title: `${ nickName }，你好 !`
         }).then(() =>{
             // window.location = "../todolist.html";
-            window.location = "../todolist.html";
+            window.location = "./todolist.html";
         })
     })
     .catch((err) =>{
