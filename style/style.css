@@ -1,18 +1,14 @@
 body{
-    background-color: #ffd370;
+    background-color: #F8ECDD;
+    font-family: "Noto Sans TC", serif;
 }
 #nav-switch{
     display: none;
 }
 .main-header{
-    padding: 16px 0;
+    padding: 16px 32px;
     
     
-}
-.container{
-    max-width: 375px;
-    /* outline: 1px solid #fa0; */
-
 }
 .header-group{
     
@@ -53,16 +49,67 @@ body{
     height: 40px;
     background-color: #333;
     border-radius: 10px;
+    font-size: 30px;
+    color: #fff;
     position: absolute;
     top: 50%;
     right: 2px;
     transform: translateY(-50%);
-    font-size: 30px;
-    color: #fff;
     display: flex;
     justify-content: center;
     align-items: center;
 }
+.card-todos{
+    padding: 16px;
+    border: 1px solid #FFFFFF;
+    border-radius: 10px;
+    background-color: #fff;
+}
+.card-todos .bx{
+    font-size: 20px;
+    vertical-align: middle;
+}
+.card-todos .card-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 16px;
+    /* border-bottom: 1px solid #333333; */
+    font-size: 14px;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 24px;
+    /* color: #9f9a91; */
+}
+.card-todos .card-body{
+    
+    margin-bottom: 24px;
+    font-size: 14px;
+    font-weight: 400;
+    color: #333;
+}
+.card-todos .todos-item{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    padding-bottom: 16px;
+    border-bottom: 1px solid #E5E5E5;
+}
+.card-todos .todos-item:not(:first-of-type){
+    padding-top: 16px;
+}
+.card-todos .card-body .todos-item span{
+    margin-left: 16px;
+}
+.card-todos .card-footer{
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+/* Navbar */
 @media screen and (max-width:767px){
     .header-group .hb{
         display: inline-block;
@@ -137,10 +184,13 @@ body{
         color: #fff;
     }
     .header-group .main-nav a+a{
-        border-top: 2px solid #000;
+        border-top: 2px solid #F8ECDD;
     }
 }
 @media screen and (min-width:768px){
+    .container{
+        max-width: 500px;
+    }
     .main-header .hb{
         display: none;
     }

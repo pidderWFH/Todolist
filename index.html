@@ -12,8 +12,8 @@
 </head>
 <body>
     <header class="main-header">
-        <div class="container">
-            <div class="col-12">
+        <!-- <div class="container"> -->
+            <!-- <div class="col-12"> -->
                 <input type="checkbox" name="" id="nav-switch">
                 <div class="header-group">
                     <h1>
@@ -27,24 +27,46 @@
                     </label>
                     <!-- 選單 -->
                     <nav class="main-nav">
-                        <a href="#">個人資料</a>
-                        <a href="#">登出</a>
+                        <!-- <a href="#">個人資料</a> -->
+                        <a href="./index.html" class="todoUser">OOO 的待辦</a>
+                        <a href="#" class="logout">登出</a>
                     </nav>
                 </div>
             </div>
-        </div>
+        <!-- </div> -->
     </header>
     <main class="main-content">
         <div class="container">
             <div class="col-12">
                 <div class="add-todo">
-                    <input type="text" name="" placeholder="新增待辦事項" id="addTodo">
-                    <i class="bx bx-plus add-icon"></i>
+                    <input type="text" class="inputTodo keyboardInput" name="" placeholder="新增待辦事項" >
+                    <button type="button" class="add-icon addTodo">
+                        <i class="bx bx-plus"></i>
+                    </button>
                 </div>
-
-                <i class="bx bx-x"></i>
+            </div>
+            <div class="col-12">
+                <div class="card-todos">
+                    <div class="card-header">
+                        <span>全部</span>
+                        <span>待完成</span>
+                        <span>已完成</span>
+                    </div>
+                    <div class="card-body">
+                        <ul class="todos-list todosList">
+                            
+                        </ul>
+                    </div>
+                    <div class="card-footer">
+                        <div class="js-activeNum">0 個待完成項目</div>
+                        <div class="js-deletAllTodos">清除已完成項目</div>
+                    </div>
+                </div>
             </div>
         </div>
     </main>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.2.2/axios.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="./js/todolist.js"></script>
 </body>
 </html>
