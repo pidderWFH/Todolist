@@ -48,18 +48,18 @@
             <div class="col-12">
                 <div class="card-todos">
                     <div class="card-header">
-                        <span>全部</span>
-                        <span>待完成</span>
-                        <span>已完成</span>
+                        <span data-tab="all" class="all active">全部</span>
+                        <span data-tab="undo">待完成</span>
+                        <span data-tab="complete">已完成</span>
                     </div>
                     <div class="card-body">
-                        <ul class="todos-list todosList">
+                        <ul class="todos-list todosList tabTodo">
                             
                         </ul>
                     </div>
                     <div class="card-footer">
-                        <div class="js-activeNum">0 個待完成項目</div>
-                        <div class="js-deletAllTodos">清除已完成項目</div>
+                        <div><span class="js-undoNum">0</span> 個待完成項目</div>
+                        <div class="deleteAllTodos js-deletAllTodos">清除已完成項目</div>
                     </div>
                 </div>
             </div>

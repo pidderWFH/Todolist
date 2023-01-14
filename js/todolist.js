@@ -1,6 +1,7 @@
 const apiurl = "https://todoo.5xcamp.us";  
 const todoUser = document.querySelector(".todoUser");
 const btnLogout = document.querySelector(".logout");
+
 btnLogout.addEventListener("click", logout);
 
 
@@ -49,18 +50,29 @@ function getTodos(){
         // todos.data = res.data.content;
         // todos.id = res.data.id;
         renderTodos(data);
+        // console.log(data);
     })
 }
-
+let tabStatus = "all";
 
 // 渲染畫面
 function renderTodos(data){
     // console.log(data);
+    let showTodo = [];
+    if(tabStatus === "all"){
+        showTodo = data;
+    }else if(tabStatus === "undo"){
+        showTodo = data.filter((item) => item.completed_at === null);
+    }else if(tabStatus === "complete"){
+        showTodo = data.filter((item) => item.completed_at !== null);
+    }
+    
+    // console.log(showTodo);
     let str = "";
-    data.forEach(function(item){
+    showTodo.forEach(function(item){
         str += `<li class="todos-item"  data-id="${ item.id }">
         <div class="txt">
-            <i class="bx bx-checkbox"></i>
+            <i class="bx ${item.completed_at === null ? "bx-checkbox" : "bx-checkbox-checked" }"></i>
             <span>
                 ${ item.content }
             </span>
@@ -73,8 +85,21 @@ function renderTodos(data){
     });
     const todosList = document.querySelector(".todosList");
     todosList.innerHTML = str;
+    // const todosContainer = document.querySelector(".card-todos");
+    // const undoNum = data.filter((item) => item.completed_at !== null).length;
+    // document.querySelector(".js-undoNum").textContent = undoNum;
+    // todosContainer.innerHTML = str;
+    undoCounter(data);
 }
-
+// 待完成事項
+function undoCounter(data){
+    let undoTotal = 0;
+    data.forEach(item =>{
+        if(item.completed_at === null ){ undoTotal++ };
+    })
+    const undoNum = document.querySelector(".js-undoNum");
+    undoNum.textContent = `${ undoTotal }`;
+}
 // addTodo
 
 
@@ -150,12 +175,37 @@ todoList.addEventListener("click", (e) =>{
     let todoId = e.target.closest("li").dataset.id;
     if(target.classList.contains("delTodo")){
         deleteTodo(todoId);
+    }else if(target.classList.contains("editTodo")){
+        editTodo(todoId);
     }
-    
-    // else if(target.classList.contains("editTodo")){
-    //     editTodo(todoId);
-    // }
+    toggleTodo(todoId);
 })
+// 編輯 todo
+function editTodo(id){
+    Swal.fire({
+        icon: "info",
+        title: "請編輯內容",
+        input: "text"
+    }).then((content) =>{
+        if(content.value.trim() === undefined){
+            return;
+        }
+    
+        axios.put(`${ apiurl }/todos/${ id }`,{
+            todo:{
+                "content": content.value
+            }
+        })
+        .then((res) =>{
+            getTodos();
+            // Swal.fire(`${ res.data.message }`, "編輯成功", "success")
+        })
+        .catch((err) =>{
+            console.log(err);
+        })
+    })
+}
+
 // deleteTodo
 function deleteTodo(id){
     // console.log(data);
@@ -171,12 +221,28 @@ function deleteTodo(id){
 }
 
 // delete all Todos
-// const deleteAllTodos = document.querySelector(".js-deletAllTodos");
-// deleteAllTodos.addEventListener("click", deleteTodos);
-// function deleteTodos(){
-//     e.preventDefault();
+const deleteAllTodos = document.querySelector(".js-deletAllTodos");
+deleteAllTodos.addEventListener("click", deleteTodos);
+function deleteTodos(e){
+    e.preventDefault();
+    axios.defaults.headers.common["Authorization"]= localStorage.getItem("token");
+    axios.get(`${ apiurl }/todos`)
+    .then((res) =>{
+        // filter 待完成( completed_at == null )的，就是已完成的
+        const completeTodo = res.data.todos.filter((item) => item.completed_at !== null);
+        const delAllUrl = completeTodo.map((item) => `${ apiurl }/todos/${ item.id }`);
 
-// }
+        Promise.all(delAllUrl.map((url) =>{
+            return axios.delete(url);
+        })).then((res) =>{
+            console.log(res);
+            Swal.fire("刪除成功", "已完成項目已刪除", "success");
+            getTodos();
+        }).catch((err) =>{
+            console.log(err);
+        })
+    })
+}
 
 // updateTodo
 // function updateTodo(id){
@@ -199,3 +265,31 @@ function deleteTodo(id){
         
 //     }
 // })
+
+// toggle Todo
+function toggleTodo(id){
+    
+    axios.defaults.headers.common["Authorization"]= localStorage.getItem("token");
+    axios.patch(`${ apiurl }/todos/${ id }/toggle`, {})
+    .then((res) =>{
+        getTodos();
+    })
+    .catch((err) =>{
+        let reason = error.response.data.error ? error.response.data.error : "";
+        alert(error.response.data.message + "" + reason)
+    })
+}
+
+// Tab changeTodo
+const todoTab = document.querySelector(".card-header"); 
+todoTab.addEventListener("click", (e) =>{
+    e.preventDefault();
+    if(todoTab){
+        tabStatus = e.target.dataset.tab;
+        const elems = document.querySelectorAll(".card-header span");
+        elems.forEach((item) => item.classList.remove("active"));
+        e.target.classList.add("active");
+        // console.log(tabStatus);
+        getTodos();
+    }
+})

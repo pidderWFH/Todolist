@@ -60,7 +60,7 @@ body{
     align-items: center;
 }
 .card-todos{
-    padding: 16px;
+    
     border: 1px solid #FFFFFF;
     border-radius: 10px;
     background-color: #fff;
@@ -70,10 +70,11 @@ body{
     vertical-align: middle;
 }
 .card-todos .card-header{
+    
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 16px;
+    /* padding: 16px; */
     /* border-bottom: 1px solid #333333; */
     font-size: 14px;
     font-weight: 700;
@@ -81,8 +82,22 @@ body{
     margin-bottom: 24px;
     /* color: #9f9a91; */
 }
+.card-todos .card-header span{
+    padding: 16px 0;
+    width: 33.3333%;
+    text-align: center;
+    color: #9F9A91;
+    border-bottom: 2px solid #9F9A91;
+}
+.card-todos .card-header span:hover{
+    cursor: pointer;
+}
+.card-todos .card-header .active, .card-todos .card-header span:hover{
+    color: #333;
+    border-bottom: 2px solid #333;
+}
 .card-todos .card-body{
-    
+    padding: 16px;
     margin-bottom: 24px;
     font-size: 14px;
     font-weight: 400;
@@ -103,6 +118,7 @@ body{
     margin-left: 16px;
 }
 .card-todos .card-footer{
+    padding: 16px;
     display: flex;
     justify-content: space-between;
     font-size: 14px;
