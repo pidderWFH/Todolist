@@ -17,7 +17,7 @@ function logout(){
             title: res.data.message,
         }).then(() =>{
             localStorage.clear();
-            window.location = "../Todolist/login.html";
+            window.location = "./login.html";
         })
     }).catch((err) =>{
         let errTxt = err.response.data.error ? error.response.data.err : "";
