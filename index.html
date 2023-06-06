@@ -11,93 +11,66 @@
     <title>TodoList</title>
 </head>
 <body>
-    <section class="login">
-        <div class="container forms">
-            <!-- Signin Form -->
-            <div class="form signin">
-                <h2>
-                    <img src="./images/logo_lg.png" alt="">
-                </h2>
-                <form>
-                    <div class="input-field">
-                        <!-- <label for="email">信箱</label> -->
-                        <input type="email" placeholder="請輸入Email" class="input" id="email">
+    <div class="bg">
+        <section class="login">
+            <div class="sign-in-group">
+                <input class="login-radio" type="radio" name="login" id="sign-in" checked>
+                <label for="sign-in" class="tag"><span>登入</span></label>
+                <div class="current sign-in">
+                    <div class="logo">
+                        <img src="./images/logo_lg.png" alt="online todolist">
                     </div>
-                    <div class="input-field">
-                        <!-- <label for="password">密碼</label> -->
-                        <input type="password" placeholder="請輸入密碼" class="password" id="password">
-                        <i class="bx bx-hide hide-icon"></i>
+                    <input type="email" placeholder="請輸入Email" class="input-text" id="signin-email">
+                    <div class="pwd-group">
+                        <input type="password" placeholder="請輸入密碼" name="" id="password" class="input-text">
+                        <i class="bx bx-hide pwd-icon" id="pwdIcon"></i>    
                     </div>
-                    <div class="form-link">
-                       <a href="#" class="forgot-pass">Forgot password ?</a>
-                    </div>
-                    <div class="button-field ">
-                        <button  class="js-signin">登入</button>
-                    </div>
-                    <div class="form-link">
-                        <span>Need an account ?<a href="#" class="link signup-link"> Signup </a></span>
-                     </div>
-                </form>
-                <div class="line"></div>
-                <div class="third-options">
-                    <a href="#" class="facebook">
-                        <i class="bx bxl-facebook-circle"></i>
-                        <span>Login with Facebook</span>
+                    <a href="#" class="forgot-pwd">
+                        <span>忘記密碼?</span>
                     </a>
-                </div>
-                <div class="third-options">
-                    <a href="#" class="google">
-                        <i class="bx bxl-google-plus-circle"></i>
-                        <span>Login with Google</span>
-                    </a>
+                    <button class="btn js-signin">登入</button>
+                    <!-- <div class="line"></div> -->
+                    <!-- <div class="third-options">
+                        <a href="#" class="link-btn facebook">
+                            <i class="bx bxl-facebook-circle icon"></i>
+                            <span>
+                                Sign in with Facebook
+                            </span>
+                        </a>
+                        <a href="#" class="link-btn google">
+                            <i class="bx bxl-google-plus-circle"></i>
+                            <span>
+                                Sign in with Google
+                            </span>
+                        </a>
+                    </div> -->
                 </div>
             </div>
-            <!-- Signup Form -->
-            <div class="form signup">
-                <h2>
-                    <img src="./images/logo_lg.png" alt="">
-                </h2>
-                <form action="#">
-                    <div class="input-field">
-                        <!-- <label for="signup-email">信箱</label> -->
-                        <input type="email" placeholder="請輸入Email" class="input" id="signup-email">
+            <div class="sign-up-group">
+                <input class="login-radio" type="radio" name="login" id="sign-up">
+                <label for="sign-up" class="tag"><span>註冊</span></label>
+                <div class="current sign-up">
+                    <div class="logo">
+                        <img src="./images/logo_lg.png" alt="online todolist">
                     </div>
-                    <div class="input-field">
-                        <!-- <label for="name">您的暱稱</label> -->
-                        <input type="text" placeholder="請輸入暱稱" class="input" id="name">
+                    <input type="email" placeholder="請輸入Email" class="input-text" id="signup-email">
+                    <input type="text" placeholder="請輸入暱稱" name="" id="name" class="input-text">
+                    <div class="pwd-group">
+                        <input type="password" placeholder="請輸入密碼" name="" id="password1" class="input-text">
+                        <i class="bx bx-hide pwd-icon" id="pwdIcon"></i>  
                     </div>
-                    <div class="input-field">
-                        <!-- <label for="signup-password">密碼</label> -->
-                        <input type="password" placeholder="請輸入密碼" class="password" id="signup-password">
+                    <div class="pwd-group">
+                        <input type="password" placeholder="請再次輸入密碼" name="" id="rePassword" class="input-text">
+                        <i class="bx bx-hide pwd-icon" id="rePwdIcon"></i>  
                     </div>
-                    <div class="input-field">
-                        <!-- <label for="checked-password">再次輸入密碼</label> -->
-                        <input type="password" placeholder="請再次輸入密碼" class="password" id="checked-password">
-                        <i class="bx bx-hide hide-icon"></i>
-                    </div>
-                    <div class="button-field">
-                        <button class="js-signup">註冊</button>
-                    </div>
-                    <div class="form-link">
-                        <span>Already have an account ?<a href="#" class="link signin-link"> Signin </a></span>
-                     </div>
-                </form>
-                <div class="line"></div>
-                <div class="third-options">
-                    <a href="#" class="facebook">
-                        <i class="bx bxl-facebook-circle"></i>
-                        <span>Login with Facebook</span>
+                    <a href="#" class="forgot-pwd">
+                        <span>忘記密碼?</span>
                     </a>
-                </div>
-                <div class="third-options">
-                    <a href="#" class="google">
-                        <i class="bx bxl-google-plus-circle"></i>
-                        <span>Login with Google</span>
-                    </a>
+                    <button class="btn js-signup">註冊</button>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+    </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.2.2/axios.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="./js/script.js"></script>

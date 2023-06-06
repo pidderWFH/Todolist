@@ -117,12 +117,18 @@ body{
 .card-todos .card-body .todos-item span{
     margin-left: 16px;
 }
+.card-todos .card-body .todos-item .editTodo, .card-todos .card-body .todos-item .delTodo{
+    cursor: pointer;
+}
 .card-todos .card-footer{
     padding: 16px;
     display: flex;
     justify-content: space-between;
     font-size: 14px;
     font-weight: 400;
+}
+.card-todos .card-footer .deleteAllTodos{
+    cursor: pointer;
 }
 
 /* Navbar */
@@ -206,6 +212,7 @@ body{
 @media screen and (min-width:768px){
     .container{
         max-width: 500px;
+    
     }
     .main-header .hb{
         display: none;

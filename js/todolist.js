@@ -30,11 +30,15 @@ function logout(){
     })
 }
 
-if( window.localStorage.pathname = "todolist.html"){
-    getTodos();
-    todoUser.textContent = `${localStorage.getItem("nickName")} 的待辦`; 
-}
-
+// if( window.localStorage.pathname === "todolist.html"){
+//     getTodos();
+//     todoUser.textContent = `${localStorage.getItem("nickName")} 的待辦`;
+// }
+// todoUser.addEventListener("click", (e) =>{
+//     e.preventDefault();
+//     todoUser.textContent = `${localStorage.getItem("nickName")} 的待辦`;
+//     window.location = "./todolist.html";
+// })
 // getTodo
 let data = [];
 // axios get Todo
@@ -84,6 +88,7 @@ function renderTodos(data){
         </div>
     </li>`
     });
+    todoUser.textContent = `${localStorage.getItem("nickName")} 的待辦`;
     const todosList = document.querySelector(".todosList");
     todosList.innerHTML = str;
     // const todosContainer = document.querySelector(".card-todos");
@@ -178,8 +183,9 @@ todoList.addEventListener("click", (e) =>{
         deleteTodo(todoId);
     }else if(target.classList.contains("editTodo")){
         editTodo(todoId);
+    }else{
+        toggleTodo(todoId);
     }
-    toggleTodo(todoId);
 })
 // 編輯 todo
 function editTodo(id){
@@ -188,8 +194,9 @@ function editTodo(id){
         title: "請編輯內容",
         input: "text"
     }).then((content) =>{
-        if(content.value.trim() === undefined){
-            return;
+        if(content.value.trim() === undefined || content.value.trim() ==="" ){
+            Swal.fire("請輸入內容", "內容無法為空白，請重新輸入", "warning");
+            // return;
         }
     
         axios.put(`${ apiurl }/todos/${ id }`,{
@@ -236,7 +243,7 @@ function deleteTodos(e){
         Promise.all(delAllUrl.map((url) =>{
             return axios.delete(url);
         })).then((res) =>{
-            console.log(res);
+            // console.log(res);
             Swal.fire("刪除成功", "已完成項目已刪除", "success");
             getTodos();
         }).catch((err) =>{

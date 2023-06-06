@@ -1,7 +1,7 @@
 // Login forms
-const forms = document.querySelector(".forms");
-const pwShowHide = document.querySelectorAll(".hide-icon");
-const links = document.querySelectorAll(".link");
+// const forms = document.querySelector(".forms");
+// const pwShowHide = document.querySelectorAll(".hide-icon");
+// const links = document.querySelectorAll(".link");
 // login API
 const apiurl = "https://todoo.5xcamp.us";  
 
@@ -20,8 +20,8 @@ signup.addEventListener("click", (e) =>{
     e.preventDefault();
     const signupEmail = document.querySelector("#signup-email").value.trim();
     const nickname = document.querySelector("#name").value.trim();
-    const signupPassword = document.querySelector("#signup-password").value.trim();
-    const checkedPassword = document.querySelector("#checked-password").value.trim();
+    const signupPassword = document.querySelector("#password1").value.trim();
+    const checkedPassword = document.querySelector("#rePassword").value.trim();
     if ( signupEmail === "" || nickname === "" || signupPassword === "" || checkedPassword === ""){
         Swal.fire({
             icon: "error",
@@ -55,7 +55,7 @@ signup.addEventListener("click", (e) =>{
             icon: "success",
             title: `${ nickName }，你好 !`
         }).then(() =>{
-            window.location = "./todolist.html";
+            window.location = "../todolist.html";
             // window.location = "/Todolist/todolist.html";
         })
     })
@@ -64,7 +64,7 @@ signup.addEventListener("click", (e) =>{
         Swal.fire({
             icon: "error",
             text: err.response.data.message,
-            text: "帳號已被註冊，請重新填寫"
+            text: "帳號已被註冊，請重新註冊"
         })
     })
 })
@@ -85,7 +85,7 @@ signup.addEventListener("click", (e) =>{
 const signin = document.querySelector(".js-signin");
 signin.addEventListener("click", (e) =>{
     e.preventDefault();
-    const email = document.querySelector("#email").value;
+    const email = document.querySelector("#signin-email").value;
     const password = document.querySelector("#password").value;
     if( email === "" || password ===""){
         Swal.fire({
@@ -112,7 +112,7 @@ signin.addEventListener("click", (e) =>{
             title: `${ nickName }，你好 !`
         }).then(() =>{
             // window.location = "../todolist.html";
-            window.location = "./todolist.html";
+            window.location = "../todolist.html";
         })
     })
     .catch((err) =>{
@@ -134,11 +134,61 @@ signin.addEventListener("click", (e) =>{
 
 
 
+// pwShowHide.forEach(hideIcon => {
+//     hideIcon.addEventListener("click", ()=>{
+//         let pwFields = hideIcon.parentElement.parentElement.querySelectorAll(".password");
+        
+//         pwFields.forEach(password =>{
+//             if(password.type === "password"){
+//                 password.type = "text";
+//                 hideIcon.classList.replace("bx-hide", "bx-show");
+//                 return;
+//             }
+//             password.type = "password";
+//                 hideIcon.classList.replace("bx-show", "bx-hide");
+//         })
+//     })
+// })
+
+// links.forEach(link =>{
+//     link.addEventListener("click", e =>{
+//         e.preventDefault();
+//         forms.classList.toggle("show-signup");
+//     })
+// })
+
+const pwShowHide = document.querySelectorAll("#pwdIcon");
 pwShowHide.forEach(hideIcon => {
     hideIcon.addEventListener("click", ()=>{
-        let pwFields = hideIcon.parentElement.parentElement.querySelectorAll(".password");
+        let pwd = hideIcon.parentElement.parentElement.querySelectorAll("#password");
+        let pwd1 = hideIcon.parentElement.parentElement.querySelectorAll("#password1");
+        pwd.forEach(password =>{
+            if(password.type === "password"){
+                password.type = "text";
+                hideIcon.classList.replace("bx-hide", "bx-show");
+                return;
+            }
+            password.type = "password";
+                hideIcon.classList.replace("bx-show", "bx-hide");
+        })
+        pwd1.forEach(password =>{
+            if(password.type === "password"){
+                password.type = "text";
+                hideIcon.classList.replace("bx-hide", "bx-show");
+                return;
+            }
+            password.type = "password";
+                hideIcon.classList.replace("bx-show", "bx-hide");
+        })
         
-        pwFields.forEach(password =>{
+        
+    })
+})
+const repwdShowHide = document.querySelectorAll("#rePwdIcon");
+repwdShowHide.forEach(hideIcon =>{
+    hideIcon.addEventListener("click", ()=>{
+        let rePwd = hideIcon.parentElement.parentElement.querySelectorAll("#rePassword");
+        rePwd.forEach(password =>{
             if(password.type === "password"){
                 password.type = "text";
                 hideIcon.classList.replace("bx-hide", "bx-show");
@@ -149,11 +199,3 @@ pwShowHide.forEach(hideIcon => {
         })
     })
 })
-
-links.forEach(link =>{
-    link.addEventListener("click", e =>{
-        e.preventDefault();
-        forms.classList.toggle("show-signup");
-    })
-})
-
