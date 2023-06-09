@@ -6,7 +6,7 @@
 const apiurl = "https://todoo.5xcamp.us";  
 
 // 切換頁面
-let currentPage = window.location.pathname;
+// let currentPage = window.location.pathname;
 
 // if( currentPage.includes("login")){
 
@@ -55,8 +55,9 @@ signup.addEventListener("click", (e) =>{
             icon: "success",
             title: `${ nickName }，你好 !`
         }).then(() =>{
-            window.location = "../todolist.html";
+            window.location = location.href + "/todolist.html";
             // window.location = "/Todolist/todolist.html";
+            // location.href
         })
     })
     .catch((err) =>{
